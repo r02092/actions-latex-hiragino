@@ -16,6 +16,7 @@ jobs:
       - run: sudo /usr/local/texlive/2025basic/bin/universal-darwin/tlmgr path add
       - run: sudo tlmgr update --self
       - run: sudo tlmgr install collection-langjapanese latexmk tex-gyre-math
+      - run: sudo tlmgr path add
       - run: latexmk -lualatex test.tex
       - uses: softprops/action-gh-release@v2
         env:
