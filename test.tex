@@ -1,0 +1,54 @@
+\documentclass{jlreq}
+\title{GitHub Actionsにおける\\ヒラギノを用いて\LaTeX 文書をコンパイルする手法の検討}
+\author{R02092}
+\usepackage[bold-style=ISO,math-style=ISO]{unicode-math}
+\usepackage[
+	bookmarks=true,
+	bookmarksdepth=tocdepth,
+	bookmarksnumbered=true,
+	hidelinks,
+	unicode,
+	pdftitle={GitHub Actionsにおけるヒラギノを用いてLaTeX文書をコンパイルする手法の検討},
+	pdfauthor={R02092}
+]{hyperref}
+\if"\directlua{tex.print(os.getenv("GITHUB_ACTION"))}"
+	\usepackage[2004jis,bold,deluxe,expert,haranoaji,jfm_tate=jlreqv,jfm_yoko=jlreq,match]{luatexja-preset}
+	\setmainfont{TeXGyreTermes}
+	\setsansfont{TeXGyreHeros}
+	\setmonofont{TeXGyreCursor}[Ligatures=NoCommon]
+	\usepackage{draftwatermark}
+	\SetWatermarkText{下書き}
+\else
+	\usepackage[2004jis,bold,deluxe,expert,hiragino-pron,jfm_tate=jlreqv,jfm_yoko=jlreq,match]{luatexja-preset}
+	\setmainfont{Times}
+	\setsansfont{Helvetica Neue}
+	\setmonofont{Courier New}[Ligatures=NoCommon]
+\fi
+\setmathfont{TeXGyreTermesMath}
+\renewcommand\emph[1]{\textbf{\textsf{#1}}}
+\begin{document}
+	\maketitle
+	\section{走れメロス}
+	メロスは激怒した。必ず、かの邪智暴虐の王を除かなければならぬと決意した。
+	メロスには政治がわからぬ。メロスは、村の牧人である。笛を吹き、羊と遊んで暮して来た。
+	けれども邪悪に対しては、人一倍に敏感であった。
+	きょう未明メロスは村を出発し、野を越え山越え、十里はなれた此のシラクスの市にやって来た。
+	メロスには父も、母も無い。女房も無い。十六の、内気な妹と二人暮しだ。
+	この妹は、村の或る律気な一牧人を、近々、花婿として迎える事になっていた。結婚式も間近かなのである。
+	\section{2次元フーリエ変換}
+	画像を$f(x,y)$とするとき、そのフーリエ変換$F(x,y)$は以下で定義される。
+	\[
+		F(u,v)=\int^\infty_{-\infty}\int^\infty_{-\infty}f(x,y)\exp\{-j2\pi(ux+vy)\}dxdy
+	\]
+	この式において、$j=\sqrt{-1}$である。$u$および$v$は
+	それぞれ$x$方向および$y$方向の\emph{空間周波数}となる。
+	また、フーリエ変換後の各周波数成分の大きさを成分ごとに
+	変化させることを\emph{周波数フィルタリング（Frequency filtering）}という。
+	Pythonにおいては、2次元フーリエ変換はNumPyの\verb|numpy.fft.fft2()|関数を用いることで可能である。
+	\section{実験レポート}
+	Makefileを用いてビルドをおこない，Raspberry Pi上で実行した．
+	$8\times 8$ドットマトリクスLEDには，最初に00が表示された．スイッチ1が押された瞬間から
+	表示される値は1秒間に10増加するペースで増加し続けた．スイッチ2が押された瞬間に値の増加は
+	停止した．再びスイッチ1を押すと表示される値も再び増加し，99の次の表示は00となり，その後も
+	値が増加し続けた．
+\end{document}
