@@ -13,8 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - run: brew install basictex
-      - run: eval "`/usr/libexec/path_helper`"
-      - run: sudo tlmgr install collection-langjapanese latexmk tex-gyre-math
+      - run: sudo /usr/local/texlive/2025basic/bin/universal-darwin/tlmgr install collection-langjapanese latexmk tex-gyre-math
       - run: latexmk -lualatex test.tex
       - uses: softprops/action-gh-release@v2
         env:
