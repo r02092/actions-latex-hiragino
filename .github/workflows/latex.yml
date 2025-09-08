@@ -1,0 +1,23 @@
+name: 文書のリリース
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  latex:
+    name: LaTeX文書をコンパイル
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v5
+      - run: brew install basictex
+      - run: eval `/usr/libexec/path_helper`
+      - run: sudo tlmgr install collection-langjapanese latexmk tex-gyre-math
+      - run: latexmk -lualatex test.tex
+      - uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          file: test.pdf
