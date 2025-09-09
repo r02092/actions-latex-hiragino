@@ -25,6 +25,7 @@ jobs:
     needs: cache
     if: needs.cache.outputs.cache-hit != 'true'
     steps:
+      - run: echo '"${{needs.cache.outputs.cache-hit}}"'
       - run: brew install mactex-no-gui
         timeout-minutes: 9
       - uses: actions/cache/save@v4
