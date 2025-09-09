@@ -18,8 +18,6 @@ jobs:
           path: /usr/local/texlive
           key: 0
           enableCrossOsArchive: true
-      - run: brew install mactex-no-gui
-        timeout-minutes: 9
       - run: /usr/local/texlive/2025/bin/universal-darwin/tlmgr path add
       - run: latexmk -lualatex test.tex
       - uses: softprops/action-gh-release@v2
