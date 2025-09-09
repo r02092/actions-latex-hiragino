@@ -26,7 +26,6 @@ jobs:
     steps:
       - run: brew install mactex-no-gui
         timeout-minutes: 9
-      - run: sudo chmod u+s /opt/homebrew/bin/gtar
       - uses: actions/cache/save@v4
         with:
           path: /usr/local/texlive
