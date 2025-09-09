@@ -19,7 +19,7 @@ jobs:
           path: /usr/local/texlive
           key: 0
           enableCrossOsArchive: true
-      - run: /usr/local/texlive/2025/bin/universal-darwin/tlmgr path add
+      - run: sudo /usr/local/texlive/2025/bin/universal-darwin/tlmgr path add
       - run: latexmk -lualatex test.tex
       - uses: softprops/action-gh-release@v2
         env:
