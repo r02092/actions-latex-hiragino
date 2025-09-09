@@ -11,7 +11,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v5
-      - run: sudo chown root /opt/homebrew/bin/gtar && sudo chmod u+s /opt/homebrew/bin/gtar
+      - run: sudo chown root /opt/homebrew/bin/gtar
+      - run: sudo chmod u+s /opt/homebrew/bin/gtar
       - id: cache
         uses: actions/cache/restore@v4
         with:
