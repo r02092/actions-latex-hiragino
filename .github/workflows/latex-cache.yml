@@ -18,6 +18,7 @@ jobs:
           path: /usr/local/texlive
           key: 0
           enableCrossOsArchive: true
+          lookup-only: true
   install:
     name: MacTeXのインストール
     runs-on: macos-latest
