@@ -1,0 +1,19 @@
+name: キャッシュの作成
+
+on:
+  schedule:
+    - cron: 0 0 */6 * *
+  workflow_dispatch:
+
+jobs:
+  latex:
+    name: キャッシュの作成
+    runs-on: macos-latest
+    steps:
+      - id: cache
+        uses: actions/cache/save@v4
+        with:
+          path: /usr/local/texlive
+          key: 0
+      - if: steps.cache.outputs.cache-hit != 'true'
+        run: brew install mactex-no-gui
