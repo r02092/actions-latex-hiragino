@@ -12,7 +12,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
-      - run: brew install mactex-no-gui
+      - id: cache
+        uses: actions/cache@v4
+        with:
+          path: /usr/local/texlive
+          key: 0
+      - if: steps.cache.outputs.cache-hit != 'true'
+        run: brew install mactex-no-gui
       - run: sudo /usr/local/texlive/2025/bin/universal-darwin/tlmgr path add
       - run: latexmk -lualatex test.tex
       - uses: softprops/action-gh-release@v2
