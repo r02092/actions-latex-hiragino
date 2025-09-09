@@ -11,7 +11,7 @@
 	pdftitle={GitHub Actionsにおけるヒラギノを用いてLaTeX文書をコンパイルする手法の検討},
 	pdfauthor={R02092}
 ]{hyperref}
-\if"\directlua{tex.print(os.getenv("GITHUB_ACTION"))}"
+\if"\directlua{tex.print(os.getenv("GITHUB_ACTIONS"))}"
 	\usepackage[2004jis,bold,deluxe,expert,haranoaji,jfm_tate=jlreqv,jfm_yoko=jlreq,match]{luatexja-preset}
 	\setmainfont{TeXGyreTermes}
 	\setsansfont{TeXGyreHeros}
