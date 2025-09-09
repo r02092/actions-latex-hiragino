@@ -11,7 +11,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: brew install mactex-no-gui
+      - run: cp -r /usr/local/texlive .
       - uses: actions/cache/save@v4
         with:
-          path: /usr/local/texlive
+          path: texlive
           key: 0
