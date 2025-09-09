@@ -25,6 +25,7 @@ jobs:
     if: needs.cache.outputs.cache-hit != 'true'
     steps:
       - run: brew install mactex-no-gui
+        timeout-minutes: 9
       - run: sudo cp -r /usr/local/texlive .
       - uses: actions/cache/save@v4
         with:
