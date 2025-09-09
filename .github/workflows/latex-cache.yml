@@ -10,10 +10,8 @@ jobs:
     name: キャッシュの作成
     runs-on: macos-latest
     steps:
-      - id: cache
-        uses: actions/cache/save@v4
+      - run: brew install mactex-no-gui
+      - uses: actions/cache/save@v4
         with:
           path: /usr/local/texlive
           key: 0
-      - if: steps.cache.outputs.cache-hit != 'true'
-        run: brew install mactex-no-gui
