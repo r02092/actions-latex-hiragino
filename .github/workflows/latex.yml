@@ -11,15 +11,16 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v5
+      - run: sudo chmod u+s /opt/homebrew/bin/gtar
       - id: cache
         uses: actions/cache/restore@v4
         with:
-          path: texlive
+          path: /usr/local/texlive
           key: 0
           enableCrossOsArchive: true
       - run: brew install mactex-no-gui
         timeout-minutes: 9
-      - run: texlive/2025/bin/universal-darwin/tlmgr path add
+      - run: /usr/local/texlive/2025/bin/universal-darwin/tlmgr path add
       - run: latexmk -lualatex test.tex
       - uses: softprops/action-gh-release@v2
         env:

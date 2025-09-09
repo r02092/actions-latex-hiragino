@@ -15,7 +15,7 @@ jobs:
       - id: cache
         uses: actions/cache/restore@v4
         with:
-          path: texlive
+          path: /usr/local/texlive
           key: 0
           enableCrossOsArchive: true
   install:
@@ -26,9 +26,9 @@ jobs:
     steps:
       - run: brew install mactex-no-gui
         timeout-minutes: 9
-      - run: sudo cp -r /usr/local/texlive .
+      - run: sudo chmod u+s /opt/homebrew/bin/gtar
       - uses: actions/cache/save@v4
         with:
-          path: texlive
+          path: /usr/local/texlive
           key: 0
           enableCrossOsArchive: true
